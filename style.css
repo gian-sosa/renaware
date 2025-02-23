@@ -20,12 +20,16 @@ a {
 
 body {
   font-family: "Quicksand", serif;
+  color: var(--rn-blue);
 }
 
 header {
+  position: sticky;
+  top: 0;
   height: var(--header-height);
   width: 100%;
-  background-color: var(--rn-orange);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }
 
 .header-contain {
@@ -109,22 +113,17 @@ main {
   width: var(--width-container);
   height: fit-content;
   margin: auto;
-  background-color: purple;
 }
 
 .producto-info {
   width: 350px;
   padding: 20px;
   border-radius: 11px;
-  background: rgb(4, 31, 61);
-  background: rgb(4, 31, 61);
-  background: rgb(235, 95, 70);
-  background: rgb(235, 95, 70);
-  background: rgb(214, 128, 113);
+  background: rgb(111, 90, 159);
   background: linear-gradient(
-    0deg,
-    rgba(214, 128, 113, 0.6488970588235294) 0%,
-    rgba(101, 137, 176, 0.654499299719888) 100%
+    180deg,
+    rgba(91, 117, 235, 0.5) 0%,
+    rgba(91, 153, 235, 0.1) 100%
   );
   transition: 0.2s box-shadow;
 }
@@ -145,7 +144,6 @@ main {
 .producto-info img {
   width: 100%;
   height: fit-content;
-  border-radius: 10px;
 }
 
 .info {
@@ -157,6 +155,10 @@ main {
 .info h1 span {
   font-size: 0.7em;
   font-weight: 400;
+}
+
+.info p {
+  font-weight: 500;
 }
 
 .info h2 {
