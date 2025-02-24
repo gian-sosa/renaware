@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
+body::-webkit-scrollbar {
+  width: 7px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(148, 163, 228); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
+
 :root {
   --rn-orange: #eb5f46;
   --rn-blue: #041f3d;
@@ -122,19 +135,18 @@ main {
   width: 350px;
   padding: 20px;
   border-radius: 11px;
-  background: rgb(111, 90, 159);
   background: linear-gradient(
     180deg,
-    rgba(91, 117, 235, 0.5) 0%,
+    rgb(190, 222, 243) 0%,
     rgba(91, 153, 235, 0.1) 100%
   );
   transition: 0.2s box-shadow;
 }
 
 .producto-info:hover {
-  box-shadow: 2px 2px 11px 1px rgba(149, 175, 196, 1);
-  -webkit-box-shadow: 2px 2px 11px 1px rgba(149, 175, 196, 1);
-  -moz-box-shadow: 2px 2px 11px 1px rgba(149, 175, 196, 1);
+  box-shadow: 2px 2px 11px 1px rgb(140, 178, 209, 1);
+  -webkit-box-shadow: 2px 2px 11px 1px rgba(140, 178, 209, 1);
+  -moz-box-shadow: 2px 2px 11px 1px rgba(140, 178, 209, 1);
   cursor: pointer;
 }
 
