@@ -17,7 +17,7 @@ body::-webkit-scrollbar-thumb {
   --rn-orange: #eb5f46;
   --rn-blue: #041f3d;
   --header-height: 120px;
-  --width-container: 1120px;
+  --width-container: 1280px;
 }
 
 a {
@@ -41,8 +41,8 @@ header {
   top: 0;
   height: var(--header-height);
   width: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: #041f3d 0px -7px 10px 1px;
 }
 
 .header-contain {
@@ -132,21 +132,16 @@ main {
 }
 
 .producto-info {
-  width: 350px;
+  width: 400px;
   padding: 20px;
-  border-radius: 11px;
-  background: linear-gradient(
-    180deg,
-    rgb(190, 222, 243) 0%,
-    rgba(91, 153, 235, 0.1) 100%
-  );
+  border: 0.1px #041f3d solid;
   transition: 0.2s box-shadow;
 }
 
 .producto-info:hover {
-  box-shadow: 2px 2px 11px 1px rgb(140, 178, 209, 1);
-  -webkit-box-shadow: 2px 2px 11px 1px rgba(140, 178, 209, 1);
-  -moz-box-shadow: 2px 2px 11px 1px rgba(140, 178, 209, 1);
+  box-shadow: 0px 0px 8px 1px rgb(115, 142, 165);
+  -webkit-box-shadow: 0px 0px 8px 1px rgb(115, 142, 165);
+  -moz-box-shadow: 0px 0px 8px 1px rgb(115, 142, 165);
   cursor: pointer;
 }
 
@@ -160,7 +155,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 350px;
   height: 350px;
   padding: 30px 0px;
 }
@@ -194,6 +189,27 @@ main {
   font-size: 0.6em;
   font-weight: 400;
   text-decoration: line-through;
+}
+
+.map {
+  width: 100%;
+}
+
+iframe {
+  display: flex;
+  width: var(--width-container);
+  margin: auto;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+.whatsapp img {
+  width: 60px;
+  height: 60px;
 }
 
 footer {
