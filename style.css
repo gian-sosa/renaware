@@ -141,15 +141,6 @@ main {
   margin: auto;
 }
 
-/* 
-.productos {
-  display: flex;
-  justify-content: space-between;
-  width: var(--width-container);
-  height: fit-content;
-  margin: auto;
-} */
-
 .producto-info {
   display: flex;
   flex-direction: column;
@@ -256,6 +247,7 @@ footer {
 
 .active {
   display: block !important;
+  top: var(--header-height) !important;
 }
 
 @media screen and (max-width: 1320px) {
@@ -313,15 +305,16 @@ footer {
 @media screen and (max-width: 960px) {
   :root {
     --width-container: 100%;
+    --header-height: 90px;
   }
   .rena-img {
-    width: 250px;
+    width: 220px;
   }
   .titulo {
     padding-left: 10px;
   }
   .header-contain h1 {
-    font-size: 0.78em;
+    font-size: 0.685em;
   }
   .ofertas {
     padding: 0px 10px 0px 10px;
@@ -332,10 +325,9 @@ footer {
     padding-right: 10px;
   }
   .nav {
-    display: none;
     background-color: #fff;
     position: absolute;
-    top: 120px;
+    top: -280px;
     width: 100%;
     transition: 0.3s all;
   }
@@ -351,9 +343,15 @@ footer {
     width: 100vw;
     height: 90px;
     border-top: 0.1px solid #ebebeb;
+    font-size: 0.9em;
   }
   .nav ul a:last-child {
     border-bottom: 0.1px solid #ebebeb;
+  }
+  .ofertas-container h1 {
+    text-align: center;
+    font-size: 0.9em;
+    margin: 20px 0;
   }
   .productos {
     display: flex;
@@ -365,10 +363,5 @@ footer {
     padding-bottom: 15px;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
-  }
-  .ofertas-container h1 {
-    text-align: center;
-    font-size: 1em;
-    margin: 20px 0;
   }
 }
