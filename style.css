@@ -386,7 +386,6 @@ footer {
     overflow-y: hidden;
     width: 100%;
     gap: 20px;
-    padding-bottom: 15px;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
   }
