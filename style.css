@@ -385,4 +385,7 @@ footer {
     height: 270px;
     padding: 30px 0px;
   }
+  .banner img {
+    padding: 0px 10px 0px 10px;
+  }
 }
