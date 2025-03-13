@@ -223,6 +223,17 @@ iframe {
   margin: auto;
 }
 
+.facebook {
+  position: fixed;
+  bottom: 80px;
+  right: 10px;
+  z-index: 1000;
+}
+.facebook img {
+  width: 60px;
+  height: 60px;
+}
+
 .whatsapp {
   position: fixed;
   bottom: 10px;
