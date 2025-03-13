@@ -124,16 +124,18 @@ main {
 
 .ofertas-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: var(--width-container);
   height: fit-content;
   margin: auto;
+  padding: 50px 0px;
 }
 
 .ofertas-container h1 {
   font-size: 1.2em;
   color: var(--rn-blue);
-  margin: 50px 0;
 }
 
 .productos {
@@ -374,10 +376,14 @@ footer {
   .nav ul li:last-child {
     border-bottom: 0.1px solid #ebebeb;
   }
+
+  .ofertas-container {
+    padding: 30px 0px;
+  }
+
   .ofertas-container h1 {
     text-align: center;
     font-size: 0.9em;
-    margin: 20px 0;
   }
   .productos {
     display: flex;
@@ -413,5 +419,13 @@ footer {
   .footer-container p {
     font-size: 0.7em;
     font-weight: 500;
+  }
+  .facebook img {
+    width: 50px;
+    height: 50px;
+  }
+  .whatsapp img {
+    width: 50px;
+    height: 50px;
   }
 }
