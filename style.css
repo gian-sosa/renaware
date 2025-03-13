@@ -114,7 +114,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 34px;
-  margin-bottom: 34px;
   width: 100%;
   height: fit-content;
 }
@@ -227,7 +226,7 @@ iframe {
 }
 
 footer {
-  height: 150px;
+  height: var(--header-height);
   width: 100%;
   background: var(--rn-blue);
 }
@@ -239,7 +238,7 @@ footer {
   align-items: center;
   margin: auto;
   gap: 10px;
-  height: 150px;
+  height: var(--header-height);
   background: var(--rn-blue);
   width: var(--width-container);
   color: white;
@@ -302,7 +301,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 920px) {
   :root {
     --width-container: 100%;
     --header-height: 90px;
@@ -377,5 +376,13 @@ footer {
   }
   .footer-container p {
     font-size: 0.8em;
+  }
+  .info-parrafos {
+    font-size: 0.8em;
+  }
+  .producto-info .imagen {
+    width: 270px;
+    height: 270px;
+    padding: 30px 0px;
   }
 }
