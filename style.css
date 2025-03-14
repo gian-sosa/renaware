@@ -18,6 +18,7 @@ body::-webkit-scrollbar-thumb {
   --rn-blue: #041f3d;
   --header-height: 90px;
   --width-container: 1280px;
+  --handf-color: rgb(252, 138, 118);
 }
 
 a {
@@ -42,12 +43,7 @@ header {
   top: 0;
   height: var(--header-height);
   width: 100%;
-  background: rgb(223, 252, 252);
-  background: linear-gradient(
-    90deg,
-    rgba(223, 252, 252, 1) 0%,
-    rgba(255, 244, 221, 1) 100%
-  );
+  background: var(--handf-color);
   box-shadow: #041f3d 0px -7px 10px 1px;
 }
 
@@ -256,12 +252,7 @@ iframe {
 footer {
   height: var(--header-height);
   width: 100%;
-  background: rgb(223, 252, 252);
-  background: linear-gradient(
-    90deg,
-    rgba(223, 252, 252, 1) 0%,
-    rgba(255, 244, 221, 1) 100%
-  );
+  background: var(--handf-color);
 }
 
 .footer-container {
@@ -338,7 +329,7 @@ footer {
 @media screen and (max-width: 920px) {
   :root {
     --width-container: 100%;
-    --header-height: 70px;
+    --header-height: 80px;
   }
   .rena-img {
     width: 220px;
@@ -376,12 +367,7 @@ footer {
   }
   .nav ul li {
     width: 100%;
-    background: rgb(223, 252, 252);
-    background: linear-gradient(
-      90deg,
-      rgba(223, 252, 252, 1) 0%,
-      rgba(255, 244, 221, 1) 100%
-    );
+    background: var(--handf-color);
   }
   .nav ul a {
     display: flex;
