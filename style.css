@@ -51,7 +51,8 @@ body {
 }
 
 .avisoImg {
-  width: 40em;
+  width: 35em;
+  max-width: 35em;
   height: auto;
 }
 
@@ -95,7 +96,7 @@ header {
 }
 
 .header-contain h1 {
-  font-size: 0.84em;
+  font-size: 0.915em;
   color: var(--rn-blue);
 }
 
@@ -170,6 +171,10 @@ main {
 .ofertas-container h1 {
   font-size: 1.2em;
   color: var(--rn-blue);
+}
+
+.ofertas-container h2 {
+  font-size: 2em;
 }
 
 .productos {
@@ -374,7 +379,7 @@ footer {
     padding-left: 10px;
   }
   .header-contain h1 {
-    font-size: 0.685em;
+    font-size: 0.745em;
   }
   .ofertas {
     padding: 0px 10px 0px 10px;
@@ -424,6 +429,9 @@ footer {
   .ofertas-container h1 {
     text-align: center;
     font-size: 0.9em;
+  }
+  .ofertas-container h2 {
+    font-size: 1.6em;
   }
   .productos {
     display: flex;
