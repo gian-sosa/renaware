@@ -1,16 +1,28 @@
-menuIcon = document.querySelector(".menuIcon");
-menuIcon.onclick = function () {
+// Variables globales
+let menuIcon, nav, cerrarImg, img;
+
+// Función para inicializar elementos del DOM
+function initializeElements() {
+  menuIcon = document.querySelector(".menuIcon");
   nav = document.querySelector(".nav");
-  nav.classList.toggle("active");
-};
-
-cerrarImg = document.querySelector(".cerrarImg");
-cerrarImg.onclick = function () {
+  cerrarImg = document.querySelector(".cerrarImg");
   img = document.querySelector(".aviso");
-  img.classList.toggle("closeAviso");
-};
 
-//javascript para evitar anticlick en la página
+  // Event listeners solo si los elementos existen
+  if (menuIcon && nav) {
+    menuIcon.onclick = function () {
+      nav.classList.toggle("active");
+    };
+  }
+
+  if (cerrarImg && img) {
+    cerrarImg.onclick = function () {
+      img.classList.toggle("closeAviso");
+    };
+  }
+}
+
+// JavaScript para evitar anticlick en la página
 document.addEventListener(
   "contextmenu",
   function (e) {
@@ -18,6 +30,7 @@ document.addEventListener(
   },
   false
 );
+
 document.addEventListener(
   "selectstart",
   function (e) {
@@ -25,7 +38,8 @@ document.addEventListener(
   },
   false
 );
-//javascript para evitar el uso de F12
+
+// JavaScript para evitar el uso de F12
 document.onkeydown = function (e) {
   if (e.keyCode === 123) {
     e.preventDefault();
@@ -41,39 +55,44 @@ document.onkeydown = function (e) {
   }
 };
 
-// Prevenir arrastre de imágenes
-document.addEventListener("DOMContentLoaded", function () {
-  const images = document.querySelectorAll("img");
-  images.forEach((img) => {
-    img.addEventListener("dragstart", function (e) {
-      e.preventDefault();
-    });
-  });
-});
-
 // Contador de visitas global usando CountAPI
 async function initGlobalVisitCounter() {
   try {
-    // URL correcta con tu API key
     const apiUrl =
       "https://api.countapi.xyz/hit/ut_MLKieFOdcEviudrGRFGqnf70sMyQdSW7NmNcTJ9l/visits";
 
+    console.log("Intentando conectar con CountAPI...");
+
     const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const data = await response.json();
+    console.log("Respuesta de CountAPI:", data);
 
     const countElement = document.getElementById("visitCount");
-    if (countElement && data.value) {
-      countElement.textContent = data.value.toLocaleString();
+    if (countElement) {
+      if (data.value !== undefined) {
+        countElement.textContent = data.value.toLocaleString();
+        console.log("Contador actualizado:", data.value);
+      } else {
+        throw new Error("No se recibió valor válido de la API");
+      }
+    } else {
+      console.error("Elemento visitCount no encontrado en el DOM");
     }
   } catch (error) {
     console.error("Error al obtener contador de visitas:", error);
-    // Fallback al localStorage si falla la API
     initLocalVisitCounter();
   }
 }
 
 // Función de respaldo con localStorage
 function initLocalVisitCounter() {
+  console.log("Usando contador local como respaldo");
+
   let visitCount = localStorage.getItem("visitCount");
 
   if (visitCount === null) {
@@ -88,10 +107,27 @@ function initLocalVisitCounter() {
   const countElement = document.getElementById("visitCount");
   if (countElement) {
     countElement.textContent = visitCount.toLocaleString();
+    console.log("Contador local actualizado:", visitCount);
   }
 }
 
-// Inicializar contador cuando cargue la página
+// Inicializar todo cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", function () {
-  initGlobalVisitCounter();
+  console.log("DOM cargado, inicializando...");
+
+  // Inicializar elementos del DOM
+  initializeElements();
+
+  // Prevenir arrastre de imágenes
+  const images = document.querySelectorAll("img");
+  images.forEach((img) => {
+    img.addEventListener("dragstart", function (e) {
+      e.preventDefault();
+    });
+  });
+
+  // Inicializar contador después de un pequeño delay
+  setTimeout(() => {
+    initGlobalVisitCounter();
+  }, 100);
 });
