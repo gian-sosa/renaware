@@ -317,6 +317,9 @@ footer {
   right: 0 !important;
 }
 
+.footer-container span {
+}
+
 @media screen and (max-width: 1320px) {
   :root {
     --width-container: 900px;

@@ -50,3 +50,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Contador de visitas
+function initVisitCounter() {
+  let visitCount = localStorage.getItem("visitCount");
+
+  if (visitCount === null) {
+    visitCount = 0;
+  } else {
+    visitCount = parseInt(visitCount);
+  }
+
+  visitCount++;
+  localStorage.setItem("visitCount", visitCount);
+
+  const countElement = document.getElementById("visitCount");
+  if (countElement) {
+    countElement.textContent = visitCount;
+  }
+}
+
+// Inicializar contador cuando cargue la página
+document.addEventListener("DOMContentLoaded", function () {
+  initVisitCounter();
+});
