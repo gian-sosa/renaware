@@ -14,7 +14,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 :root {
-  --rn-orange: #eb5f46;
+  --rn-orange: #e06e5a;
   --rn-blue: #041f3d;
   --header-height: 90px;
   --width-container: 1280px;
@@ -82,7 +82,8 @@ header {
   top: 0;
   height: var(--header-height);
   width: 100%;
-  background: var(--handf-color);
+  /* background: var(--handf-color); */
+  background-color: var(--rn-orange);
 }
 
 .titulo img {
@@ -152,6 +153,25 @@ main {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.boton-mas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  font-weight: 600;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 5px;
+  background: var(--handf-color);
+  transition: 0.3s background;
+}
+
+.boton-mas:hover {
+  background: var(--rn-orange);
+  cursor: pointer;
 }
 
 .ofertas {
@@ -229,15 +249,15 @@ main {
   height: 100%;
 }
 
+.producto-info p {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
 .info-parrafos {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.info-parrafos p {
-  font-size: 0.9em;
-  font-weight: 500;
 }
 
 .info {
@@ -295,7 +315,7 @@ iframe {
 footer {
   height: var(--header-height);
   width: 100%;
-  background: var(--handf-color);
+  background: var(--rn-orange);
 }
 
 .footer-container {
@@ -315,9 +335,6 @@ footer {
 .active {
   display: block !important;
   right: 0 !important;
-}
-
-.footer-container span {
 }
 
 @media screen and (max-width: 1320px) {
@@ -416,7 +433,7 @@ footer {
   }
   .nav ul li {
     width: 100%;
-    background: var(--handf-color);
+    background: var(--rn-orange);
   }
   .nav ul a {
     display: flex;
