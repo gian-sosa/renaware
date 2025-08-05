@@ -51,8 +51,28 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Contador de visitas
-function initVisitCounter() {
+// Contador de visitas global usando CountAPI
+async function initGlobalVisitCounter() {
+  try {
+    // URL única para tu sitio web - cambia 'renaware-pilar-sosa' por un nombre único
+    const apiUrl = "https://api.countapi.xyz/hit/renaware-pilar-sosa/visits";
+
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const countElement = document.getElementById("visitCount");
+    if (countElement && data.value) {
+      countElement.textContent = data.value.toLocaleString();
+    }
+  } catch (error) {
+    console.error("Error al obtener contador de visitas:", error);
+    // Fallback al localStorage si falla la API
+    initLocalVisitCounter();
+  }
+}
+
+// Función de respaldo con localStorage
+function initLocalVisitCounter() {
   let visitCount = localStorage.getItem("visitCount");
 
   if (visitCount === null) {
@@ -66,11 +86,11 @@ function initVisitCounter() {
 
   const countElement = document.getElementById("visitCount");
   if (countElement) {
-    countElement.textContent = visitCount;
+    countElement.textContent = visitCount.toLocaleString();
   }
 }
 
 // Inicializar contador cuando cargue la página
 document.addEventListener("DOMContentLoaded", function () {
-  initVisitCounter();
+  initGlobalVisitCounter();
 });
