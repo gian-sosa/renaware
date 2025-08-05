@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript DOM - Tutorial Interactivo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding: 25px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #667eea;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+      }
+
+      .code-example {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        position: relative;
+      }
+
+      .code-example::before {
+        content: "JavaScript";
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 12px;
+        color: #718096;
+      }
+
+      .demo-area {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 15px 0;
+        border: 2px dashed #e2e8f0;
+        min-height: 100px;
+        transition: all 0.3s ease;
+      }
+
+      .demo-area.active {
+        border-color: #667eea;
+        background: #f7fafc;
+      }
+
+      button {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      input,
+      select {
+        padding: 10px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        margin: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #667eea;
+        outline: none;
+      }
+
+      .highlight {
+        background: linear-gradient(45deg, #ffd89b, #19547b);
+        padding: 3px 8px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .result {
+        background: #e6fffa;
+        border: 2px solid #38b2ac;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 10px 0;
+        font-weight: bold;
+        color: #234e52;
+      }
+
+      .item {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+      }
+
+      .item:hover {
+        background: #f7fafc;
+        transform: translateX(10px);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 JavaScript DOM - Tutorial Interactivo</h1>
+
+      <!-- Sección 1: Seleccionar Elementos -->
+      <div class="section">
+        <h2>1. 🎯 Seleccionar Elementos del DOM</h2>
+        <p>
+          El DOM es la representación del HTML en JavaScript. Aquí aprenderás a
+          seleccionar elementos:
+        </p>
+
+        <div class="code-example">
+          // Seleccionar por ID const elemento =
+          document.getElementById('miId'); // Seleccionar por clase (primer
+          elemento) const primerElemento = document.querySelector('.miClase');
+          // Seleccionar todos los elementos con una clase const
+          todosLosElementos = document.querySelectorAll('.miClase'); //
+          Seleccionar por etiqueta const parrafos =
+          document.getElementsByTagName('p');
+        </div>
+
+        <div class="demo-area" id="demo1">
+          <p class="demo-text">Texto original</p>
+          <p class="demo-text">Otro párrafo</p>
+          <button onclick="seleccionarElementos()">
+            Seleccionar y Modificar
+          </button>
+        </div>
+      </div>
+
+      <!-- Sección 2: Modificar Contenido -->
+      <div class="section">
+        <h2>2. ✏️ Modificar Contenido</h2>
+        <p>Aprende a cambiar el contenido de los elementos:</p>
+
+        <div class="code-example">
+          // Cambiar texto elemento.textContent = 'Nuevo texto'; // Cambiar HTML
+          interno elemento.innerHTML = '&lt;strong&gt;Texto en
+          negrita&lt;/strong&gt;'; // Obtener contenido const contenido =
+          elemento.textContent;
+        </div>
+
+        <div class="demo-area">
+          <div id="contenido-demo">Contenido original</div>
+          <input
+            type="text"
+            id="nuevo-texto"
+            placeholder="Escribe nuevo texto"
+          />
+          <button onclick="cambiarContenido()">Cambiar Texto</button>
+          <button onclick="cambiarHTML()">Cambiar HTML</button>
+        </div>
+      </div>
+
+      <!-- Sección 3: Estilos CSS -->
+      <div class="section">
+        <h2>3. 🎨 Modificar Estilos CSS</h2>
+        <p>Controla la apariencia de los elementos:</p>
+
+        <div class="code-example">
+          // Cambiar estilo individual elemento.style.color = 'red';
+          elemento.style.fontSize = '20px'; // Agregar/quitar clases CSS
+          elemento.classList.add('nueva-clase');
+          elemento.classList.remove('clase-antigua');
+          elemento.classList.toggle('activo');
+        </div>
+
+        <div class="demo-area">
+          <div
+            id="caja-estilo"
+            style="
+              width: 150px;
+              height: 150px;
+              background: #667eea;
+              margin: 20px auto;
+              border-radius: 10px;
+              transition: all 0.3s ease;
+            "
+          ></div>
+          <button onclick="cambiarColor()">Cambiar Color</button>
+          <button onclick="cambiarTamaño()">Cambiar Tamaño</button>
+          <button onclick="resetearEstilo()">Resetear</button>
+        </div>
+      </div>
+
+      <!-- Sección 4: Eventos -->
+      <div class="section">
+        <h2>4. 🎪 Manejo de Eventos</h2>
+        <p>Haz que tu página sea interactiva:</p>
+
+        <div class="code-example">
+          // Agregar event listener boton.addEventListener('click', function() {
+          console.log('¡Botón clickeado!'); }); // Eventos comunes: click,
+          mouseover, keydown, change, submit
+          elemento.addEventListener('mouseover', miFuncion);
+        </div>
+
+        <div class="demo-area">
+          <button
+            id="boton-evento"
+            onmouseover="mostrarMensaje('mouse over')"
+            onmouseout="mostrarMensaje('mouse out')"
+            onclick="mostrarMensaje('click')"
+          >
+            Interactúa conmigo
+          </button>
+          <div id="mensaje-evento" class="result" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- Sección 5: Crear y Eliminar Elementos -->
+      <div class="section">
+        <h2>5. 🏗️ Crear y Eliminar Elementos</h2>
+        <p>Manipula la estructura del DOM dinámicamente:</p>
+
+        <div class="code-example">
+          // Crear nuevo elemento const nuevoDiv =
+          document.createElement('div'); nuevoDiv.textContent = 'Elemento
+          nuevo'; // Agregar al DOM contenedor.appendChild(nuevoDiv); //
+          Eliminar elemento elemento.remove();
+        </div>
+
+        <div class="demo-area">
+          <input
+            type="text"
+            id="item-texto"
+            placeholder="Escribe un elemento"
+          />
+          <button onclick="agregarElemento()">Agregar</button>
+          <button onclick="eliminarUltimo()">Eliminar Último</button>
+          <div id="lista-elementos"></div>
+        </div>
+      </div>
+
+      <!-- Sección 6: Formularios -->
+      <div class="section">
+        <h2>6. 📝 Trabajar con Formularios</h2>
+        <p>Maneja formularios y validaciones:</p>
+
+        <div class="code-example">
+          // Obtener valor de input const valor = input.value; // Validar
+          formulario if (input.value.length < 3) { input.style.borderColor =
+          'red'; return false; }
+        </div>
+
+        <div class="demo-area">
+          <form id="demo-form">
+            <input
+              type="text"
+              id="nombre"
+              placeholder="Nombre (mín. 3 caracteres)"
+              required
+            />
+            <input type="email" id="email" placeholder="Email" required />
+            <select id="pais">
+              <option value="">Selecciona país</option>
+              <option value="es">España</option>
+              <option value="mx">México</option>
+              <option value="ar">Argentina</option>
+            </select>
+            <button type="submit">Enviar</button>
+          </form>
+          <div id="resultado-form" class="result" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- Sección 7: Proyecto Final -->
+      <div class="section">
+        <h2>7. 🎯 Proyecto Final: Lista de Tareas</h2>
+        <p>Pon en práctica todo lo aprendido:</p>
+
+        <div class="demo-area">
+          <div style="display: flex; gap: 10px; margin-bottom: 20px">
+            <input
+              type="text"
+              id="nueva-tarea"
+              placeholder="Nueva tarea"
+              style="flex: 1"
+            />
+            <button onclick="agregarTarea()">Agregar</button>
+          </div>
+          <div id="lista-tareas"></div>
+          <div style="margin-top: 20px">
+            <button onclick="marcarTodasCompletas()">
+              Marcar Todas Completas
+            </button>
+            <button onclick="eliminarCompletas()">Eliminar Completas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Variables globales
+      let contadorElementos = 0;
+      let tareas = [];
+
+      // Sección 1: Seleccionar elementos
+      function seleccionarElementos() {
+        const textos = document.querySelectorAll(".demo-text");
+        textos.forEach((texto, index) => {
+          texto.textContent = `Texto modificado ${index + 1}`;
+          texto.style.color = index % 2 === 0 ? "#667eea" : "#764ba2";
+          texto.classList.add("fade-in");
+        });
+      }
+
+      // Sección 2: Modificar contenido
+      function cambiarContenido() {
+        const nuevoTexto = document.getElementById("nuevo-texto").value;
+        const contenido = document.getElementById("contenido-demo");
+        if (nuevoTexto) {
+          contenido.textContent = nuevoTexto;
+          contenido.classList.add("fade-in");
+        }
+      }
+
+      function cambiarHTML() {
+        const nuevoTexto = document.getElementById("nuevo-texto").value;
+        const contenido = document.getElementById("contenido-demo");
+        if (nuevoTexto) {
+          contenido.innerHTML = `<strong style="color: #667eea;">${nuevoTexto}</strong> <em>(HTML modificado)</em>`;
+          contenido.classList.add("fade-in");
+        }
+      }
+
+      // Sección 3: Estilos
+      function cambiarColor() {
+        const caja = document.getElementById("caja-estilo");
+        const colores = [
+          "#667eea",
+          "#764ba2",
+          "#f093fb",
+          "#f5576c",
+          "#4facfe",
+          "#00f2fe",
+        ];
+        const colorAleatorio =
+          colores[Math.floor(Math.random() * colores.length)];
+        caja.style.background = colorAleatorio;
+      }
+
+      function cambiarTamaño() {
+        const caja = document.getElementById("caja-estilo");
+        const tamaño = Math.random() * 100 + 100; // Entre 100 y 200px
+        caja.style.width = tamaño + "px";
+        caja.style.height = tamaño + "px";
+      }
+
+      function resetearEstilo() {
+        const caja = document.getElementById("caja-estilo");
+        caja.style.width = "150px";
+        caja.style.height = "150px";
+        caja.style.background = "#667eea";
+      }
+
+      // Sección 4: Eventos
+      function mostrarMensaje(evento) {
+        const mensaje = document.getElementById("mensaje-evento");
+        mensaje.textContent = `Evento: ${evento} - ${new Date().toLocaleTimeString()}`;
+        mensaje.style.display = "block";
+        mensaje.classList.add("fade-in");
+
+        // Ocultar después de 2 segundos
+        setTimeout(() => {
+          mensaje.classList.remove("fade-in");
+        }, 2000);
+      }
+
+      // Sección 5: Crear y eliminar elementos
+      function agregarElemento() {
+        const texto = document.getElementById("item-texto").value;
+        if (!texto) return;
+
+        const lista = document.getElementById("lista-elementos");
+        const nuevoItem = document.createElement("div");
+        nuevoItem.className = "item fade-in";
+        nuevoItem.innerHTML = `
+                <span>${texto}</span>
+                <button onclick="this.parentElement.remove()" style="float: right; background: #f56565;">Eliminar</button>
+            `;
+
+        lista.appendChild(nuevoItem);
+        document.getElementById("item-texto").value = "";
+        contadorElementos++;
+      }
+
+      function eliminarUltimo() {
+        const lista = document.getElementById("lista-elementos");
+        const items = lista.children;
+        if (items.length > 0) {
+          items[items.length - 1].remove();
+        }
+      }
+
+      // Sección 6: Formularios
+      document
+        .getElementById("demo-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nombre = document.getElementById("nombre").value;
+          const email = document.getElementById("email").value;
+          const pais = document.getElementById("pais").value;
+          const resultado = document.getElementById("resultado-form");
+
+          // Validación simple
+          if (nombre.length < 3) {
+            document.getElementById("nombre").style.borderColor = "red";
+            return;
+          }
+
+          if (!email.includes("@")) {
+            document.getElementById("email").style.borderColor = "red";
+            return;
+          }
+
+          // Resetear bordes
+          document.getElementById("nombre").style.borderColor = "#e2e8f0";
+          document.getElementById("email").style.borderColor = "#e2e8f0";
+
+          resultado.innerHTML = `
+                <h3>¡Formulario enviado correctamente!</h3>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>País:</strong> ${pais}</p>
+            `;
+          resultado.style.display = "block";
+          resultado.classList.add("fade-in");
+        });
+
+      // Sección 7: Lista de tareas
+      function agregarTarea() {
+        const input = document.getElementById("nueva-tarea");
+        const texto = input.value.trim();
+        if (!texto) return;
+
+        const tarea = {
+          id: Date.now(),
+          texto: texto,
+          completada: false,
+        };
+
+        tareas.push(tarea);
+        input.value = "";
+        renderizarTareas();
+      }
+
+      function renderizarTareas() {
+        const lista = document.getElementById("lista-tareas");
+        lista.innerHTML = "";
+
+        tareas.forEach((tarea) => {
+          const tareaElement = document.createElement("div");
+          tareaElement.className = `item fade-in ${
+            tarea.completada ? "completada" : ""
+          }`;
+          tareaElement.style.opacity = tarea.completada ? "0.6" : "1";
+          tareaElement.style.textDecoration = tarea.completada
+            ? "line-through"
+            : "none";
+
+          tareaElement.innerHTML = `
+                    <input type="checkbox" ${tarea.completada ? "checked" : ""} 
+                           onchange="toggleTarea(${
+                             tarea.id
+                           })" style="margin-right: 10px;">
+                    <span>${tarea.texto}</span>
+                    <button onclick="eliminarTarea(${tarea.id})" 
+                            style="float: right; background: #f56565;">Eliminar</button>
+                `;
+
+          lista.appendChild(tareaElement);
+        });
+      }
+
+      function toggleTarea(id) {
+        const tarea = tareas.find((t) => t.id === id);
+        if (tarea) {
+          tarea.completada = !tarea.completada;
+          renderizarTareas();
+        }
+      }
+
+      function eliminarTarea(id) {
+        tareas = tareas.filter((t) => t.id !== id);
+        renderizarTareas();
+      }
+
+      function marcarTodasCompletas() {
+        tareas.forEach((tarea) => (tarea.completada = true));
+        renderizarTareas();
+      }
+
+      function eliminarCompletas() {
+        tareas = tareas.filter((t) => !t.completada);
+        renderizarTareas();
+      }
+
+      // Permitir agregar tarea con Enter
+      document
+        .getElementById("nueva-tarea")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            agregarTarea();
+          }
+        });
+    </script>
+  </body>
+</html>
