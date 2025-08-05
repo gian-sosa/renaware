@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function initGlobalVisitCounter() {
   try {
     // URL única para tu sitio web - cambia 'renaware-pilar-sosa' por un nombre único
-    const apiUrl = "https://api.countapi.xyz/hit/renaware-pilar-sosa/visits";
+    const apiUrl = "ut_MLKieFOdcEviudrGRFGqnf70sMyQdSW7NmNcTJ9l";
 
     const response = await fetch(apiUrl);
     const data = await response.json();
