@@ -22,22 +22,22 @@ function initializeElements() {
   }
 }
 
-// // JavaScript para evitar anticlick en la página
-// document.addEventListener(
-//   "contextmenu",
-//   function (e) {
-//     e.preventDefault();
-//   },
-//   false
-// );
+// JavaScript para evitar anticlick en la página
+document.addEventListener(
+  "contextmenu",
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
 
-// document.addEventListener(
-//   "selectstart",
-//   function (e) {
-//     e.preventDefault();
-//   },
-//   false
-// );
+document.addEventListener(
+  "selectstart",
+  function (e) {
+    e.preventDefault();
+  },
+  false
+);
 
 // JavaScript para evitar el uso de F12
 document.onkeydown = function (e) {
@@ -70,26 +70,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-const token = "ut_5f7kcWPc0oSRse4idt7V5bbnZ0KEcmBKy4UsPbmC"; // tu nuevo token
-const workspace = "renaware";
-const counterName = "renaware";
-
-fetch(
-  `https://counterapi.dev/api/v1/workspace/${workspace}/counter/${counterName}/hit`,
-  {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  }
-)
-  .then((response) => response.json())
-  .then((data) => {
-    document.getElementById("visit-count").textContent = data.value || 0;
-  })
-  .catch((error) => {
-    console.error("Error al obtener el contador:", error);
-    document.getElementById("visit-count").textContent = "Error";
-  });
